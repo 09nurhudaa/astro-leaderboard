@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASTRO — Warehouse Star Leaderboard | Proposal Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #050210;
+    min-height: 100vh;
+  }
+
+  /* ===== TOP NAV BAR ===== */
+  .top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(10, 4, 22, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    height: 60px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 40px;
+    flex-shrink: 0;
+  }
+
+  .nav-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #FFD60A;
+    color: #1B0B3A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 0 12px rgba(255, 214, 10, 0.4);
+  }
+
+  .nav-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #FFD60A;
+    text-transform: uppercase;
+  }
+
+  .nav-subtitle {
+    font-size: 9px;
+    color: rgba(255, 248, 231, 0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  .nav-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(139, 92, 246, 0.35);
+    margin-right: 28px;
+  }
+
+  .tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+    height: 60px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 248, 231, 0.45);
+    border-bottom: 3px solid transparent;
+    transition: all 0.25s ease;
+    position: relative;
+    bottom: -1px;
+  }
+
+  .tab-btn:hover {
+    color: rgba(255, 248, 231, 0.8);
+  }
+
+  .tab-btn.active {
+    color: #FFD60A;
+    border-bottom-color: #FFD60A;
+  }
+
+  .tab-btn .tab-icon {
+    font-size: 16px;
+  }
+
+  .tab-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 800;
+    background: rgba(139, 92, 246, 0.3);
+    color: #8B5CF6;
+    margin-left: 2px;
+  }
+
+  .tab-btn.active .tab-indicator {
+    background: rgba(255, 214, 10, 0.2);
+    color: #FFD60A;
+  }
+
+  .nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(255, 214, 10, 0.12);
+    border: 1px solid rgba(255, 214, 10, 0.3);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #FFD60A;
+    text-transform: uppercase;
+  }
+
+  /* ===== PAGE CONTENT ===== */
+  .page-content {
+    padding-top: 60px;
+  }
+
+  .tab-panel {
+    display: none;
+    padding: 40px 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-height: calc(100vh - 60px);
+  }
+
+  .tab-panel.active {
+    display: flex;
+  }
+
+  .panel-label {
+    color: #8B5CF6;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 4px;
+    text-align: center;
+  }
+
+  /* ===== PAMFLET (shared) ===== */
+  .pamflet {
+    width: 794px;
+    height: 1123px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(90, 42, 140, 0.5);
+    color: #FFF8E7;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ==============================
+     SOSIALISASI PAMFLET STYLES
+  ============================== */
+  .pamflet-sos {
+    background:
+      radial-gradient(ellipse at top right, rgba(255, 214, 10, 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom left, rgba(139, 92, 246, 0.35) 0%, transparent 55%),
+      radial-gradient(ellipse at center, rgba(90, 42, 140, 0.5) 0%, transparent 70%),
+      linear-gradient(160deg, #0F0526 0%, #1B0B3A 40%, #2D1854 100%);
+  }
+
+  /* ==============================
+     PEMENANG PAMFLET STYLES
+  ============================== */
+  .pamflet-pem {
+    background:
+      radial-gradient(ellipse at top right, rgba(255, 214, 10, 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom left, rgba(139, 92, 246, 0.4) 0%, transparent 55%),
+      radial-gradient(ellipse at center top, rgba(255, 214, 10, 0.1) 0%, transparent 40%),
+      linear-gradient(160deg, #0F0526 0%, #1B0B3A 40%, #2D1854 100%);
+  }
+
+  /* ===== SHARED BG ELEMENTS ===== */
+  .stars-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.7), transparent),
+      radial-gradient(1px 1px at 60% 15%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(2px 2px at 80% 40%, rgba(255,214,10,0.6), transparent),
+      radial-gradient(1px 1px at 35% 70%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(2px 2px at 15% 85%, rgba(139,92,246,0.7), transparent),
+      radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1px 1px at 70% 65%, rgba(255,255,255,0.5), transparent);
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
+  .pattern-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent 0 22px, rgba(255,255,255,0.02) 22px 23px);
+    pointer-events: none;
+  }
+
+  .spark, .confetti {
+    position: absolute;
+    pointer-events: none;
+  }
+  .spark { color: rgba(255, 214, 10, 0.2); }
+  .confetti { font-size: 18px; opacity: 0.35; }
+
+  .corner-accent {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    opacity: 0.12;
+  }
+  .corner-accent.tl { top: -60px; left: -60px; transform: rotate(-15deg); }
+  .corner-accent.br { bottom: -60px; right: -60px; transform: rotate(165deg); }
+
+  /* ===== SHARED HEADER ===== */
+  .header {
+    position: relative;
+    padding: 24px 45px 18px;
+    text-align: center;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    flex-shrink: 0;
+  }
+
+  .header-pem {
+    padding: 30px 50px 22px;
+  }
+
+  .brand-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #FFD60A;
+  }
+
+  .brand-row-pem { margin-bottom: 18px; }
+
+  .brand-row .logo-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand-logo {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: #FFD60A; color: #1B0B3A;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 0 14px rgba(255, 214, 10, 0.5);
+  }
+  .brand-logo-pem { width: 32px; height: 32px; font-size: 18px; }
+
+  .period-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: #FFD60A; color: #1B0B3A;
+    font-weight: 800; font-size: 10px; letter-spacing: 2px;
+  }
+  .period-badge-pem { padding: 8px 16px; font-size: 11px; }
+
+  .champion-crown {
+    font-size: 40px;
+    margin-bottom: 4px;
+    filter: drop-shadow(0 0 20px rgba(255, 214, 10, 0.6));
+  }
+
+  .pre-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; letter-spacing: 8px; margin-bottom: 4px;
+    color: #FFD60A; opacity: 0.95;
+  }
+  .pre-title-pem { margin-bottom: 6px; }
+
+  .main-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 62px; line-height: 0.9;
+    letter-spacing: -2px; text-transform: uppercase;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFD60A 60%, #FFA500 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 16px rgba(255, 214, 10, 0.3));
+  }
+  .main-title-pem { font-size: 64px; line-height: 0.92; }
+
+  .warehouse-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 12px; padding: 8px 20px;
+    border: 2px solid #FFD60A; border-radius: 4px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; letter-spacing: 4px;
+    background: rgba(90, 42, 140, 0.25); color: #FFD60A;
+  }
+  .warehouse-tag-pem { margin-top: 14px; padding: 8px 22px; background: rgba(90, 42, 140, 0.3); }
+
+  .tagline {
+    margin-top: 14px; font-size: 13px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase; color: #FFF8E7;
+  }
+  .tagline span { font-weight: 800; color: #FFD60A; }
+
+  .subtitle {
+    margin-top: 16px; font-size: 12px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: #FFF8E7; opacity: 0.85;
+  }
+
+  /* ===== SECTION HEADER ===== */
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 14px; color: #FFD60A;
+  }
+  .section-number { font-family: 'Archivo Black', sans-serif; font-size: 28px; line-height: 1; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; line-height: 1; }
+  .section-line { flex: 1; height: 2px; background: currentColor; opacity: 0.3; }
+
+  /* ===== SOSIALISASI: DIVISIONS ===== */
+  .divisions-section { padding: 20px 40px 10px; position: relative; z-index: 2; }
+
+  .divisions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .division-card {
+    background: rgba(90, 42, 140, 0.22);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 10px; padding: 12px 14px;
+    backdrop-filter: blur(10px);
+  }
+
+  .division-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10px; padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(139, 92, 246, 0.35);
+  }
+  .division-name { font-family: 'Archivo Black', sans-serif; font-size: 17px; letter-spacing: 1px; color: #FFD60A; }
+  .division-slots {
+    font-family: 'Bebas Neue', sans-serif; font-size: 14px; padding: 2px 10px;
+    border-radius: 4px; background: linear-gradient(135deg, #5A2A8C 0%, #8B5CF6 100%); color: #fff;
+  }
+
+  .podium { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .podium.single { grid-template-columns: 1fr; }
+
+  .place {
+    text-align: center; padding: 8px 4px; border-radius: 6px;
+  }
+  .place-rank { font-family: 'Archivo Black', sans-serif; font-size: 20px; line-height: 1; margin-bottom: 2px; }
+  .place-label { font-size: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: 0.85; margin-bottom: 4px; }
+  .place-prize { font-family: 'Archivo Black', sans-serif; font-size: 13px; letter-spacing: -0.5px; }
+  .place-prize small { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8px; font-weight: 600; opacity: 0.7; display: block; margin-top: 1px; }
+
+  .place.gold { background: linear-gradient(135deg, rgba(255,214,10,0.22) 0%, rgba(255,165,0,0.08) 100%); border: 1px solid rgba(255,214,10,0.45); }
+  .place.gold .place-rank { color: #FFD60A; }
+  .place.silver { background: linear-gradient(135deg, rgba(226,232,240,0.16) 0%, rgba(148,163,184,0.06) 100%); border: 1px solid rgba(226,232,240,0.35); }
+  .place.silver .place-rank { color: #E2E8F0; }
+  .place.bronze { background: linear-gradient(135deg, rgba(205,127,50,0.2) 0%, rgba(139,69,19,0.08) 100%); border: 1px solid rgba(205,127,50,0.4); }
+  .place.bronze .place-rank { color: #CD7F32; }
+
+  /* ===== SOSIALISASI: CRITERIA ===== */
+  .criteria-section { padding: 8px 40px 12px; position: relative; z-index: 2; }
+  .criteria-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .criteria-item {
+    text-align: center; padding: 10px 6px;
+    background: rgba(90, 42, 140, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 8px;
+  }
+  .criteria-icon { font-size: 22px; margin-bottom: 4px; display: block; }
+  .criteria-name { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1px; color: #FFD60A; }
+  .criteria-desc { font-size: 8px; opacity: 0.7; margin-top: 1px; line-height: 1.3; }
+
+  /* ===== SOSIALISASI: REQUIREMENTS STRIP ===== */
+  .requirements-strip {
+    margin: 0 40px; padding: 14px 22px;
+    background: linear-gradient(90deg, rgba(255,214,10,0.12) 0%, rgba(139,92,246,0.15) 100%);
+    border: 1px solid rgba(255,214,10,0.3); border-radius: 10px;
+    display: flex; justify-content: center; position: relative; z-index: 2;
+  }
+  .req-block { display: flex; gap: 10px; align-items: flex-start; }
+  .req-icon {
+    flex-shrink: 0; width: 32px; height: 32px;
+    background: #FFD60A; color: #1B0B3A; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 800;
+  }
+  .req-content h4 { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 1.5px; color: #FFD60A; margin-bottom: 3px; line-height: 1; }
+  .req-content p { font-size: 9.5px; line-height: 1.45; opacity: 0.9; }
+
+  /* ===== SOSIALISASI: BOTTOM ===== */
+  .bottom-area { margin-top: auto; padding: 12px 40px 18px; position: relative; z-index: 2; }
+  .cta-bar {
+    text-align: center; padding: 12px; border-radius: 6px;
+    background: #FFD60A; color: #1B0B3A;
+    font-family: 'Archivo Black', sans-serif; font-size: 20px; letter-spacing: 3px;
+    text-transform: uppercase; box-shadow: 0 0 24px rgba(255, 214, 10, 0.25);
+  }
+  .bottom-info {
+    display: flex; justify-content: space-between; margin-top: 10px; padding-top: 10px;
+    border-top: 1px solid rgba(139, 92, 246, 0.25);
+    font-size: 9px; opacity: 0.7; letter-spacing: 1.5px; text-transform: uppercase; color: #FFD60A;
+  }
+
+  /* ===== PEMENANG: DIVISION BLOCKS ===== */
+  .divisions-container { padding: 20px 38px 10px; }
+  .division-block { margin-bottom: 14px; }
+  .division-label {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+    padding: 6px 14px;
+    background: linear-gradient(90deg, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0.05) 100%);
+    border-left: 3px solid #FFD60A; border-radius: 4px;
+  }
+  .division-label-name { font-family: 'Archivo Black', sans-serif; font-size: 16px; letter-spacing: 1.5px; color: #FFD60A; }
+  .division-label-sub { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; margin-left: auto; }
+
+  .winners-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .winners-row.single { grid-template-columns: 1fr; max-width: 240px; margin: 0 auto; }
+
+  .winner-card {
+    display: flex; align-items: center; gap: 10px; padding: 10px;
+    background: rgba(90, 42, 140, 0.22);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 10px; backdrop-filter: blur(8px); position: relative;
+  }
+  .winner-card.gold { background: linear-gradient(135deg, rgba(255, 214, 10, 0.18) 0%, rgba(90, 42, 140, 0.25) 100%); border: 1px solid rgba(255, 214, 10, 0.5); box-shadow: 0 0 20px rgba(255, 214, 10, 0.15); }
+  .winner-card.silver { background: linear-gradient(135deg, rgba(226, 232, 240, 0.15) 0%, rgba(90, 42, 140, 0.25) 100%); border: 1px solid rgba(226, 232, 240, 0.4); }
+  .winner-card.bronze { background: linear-gradient(135deg, rgba(205, 127, 50, 0.18) 0%, rgba(90, 42, 140, 0.25) 100%); border: 1px solid rgba(205, 127, 50, 0.45); }
+
+  .avatar-wrapper { position: relative; flex-shrink: 0; }
+  .avatar {
+    width: 58px; height: 58px; border-radius: 50%;
+    background: linear-gradient(135deg, #5A2A8C 0%, #8B5CF6 100%);
+    display: flex; align-items: center; justify-content: center;
+    border: 3px solid; position: relative; overflow: hidden;
+  }
+  .winner-card.gold .avatar { border-color: #FFD60A; box-shadow: 0 0 12px rgba(255, 214, 10, 0.4); }
+  .winner-card.silver .avatar { border-color: #E2E8F0; }
+  .winner-card.bronze .avatar { border-color: #CD7F32; }
+  .avatar svg { width: 42px; height: 42px; fill: rgba(255, 255, 255, 0.85); }
+
+  .rank-badge {
+    position: absolute; bottom: -4px; right: -4px;
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Archivo Black', sans-serif; font-size: 12px; border: 2px solid #1B0B3A;
+  }
+  .rank-badge.gold { background: #FFD60A; color: #1B0B3A; }
+  .rank-badge.silver { background: #E2E8F0; color: #1B0B3A; }
+  .rank-badge.bronze { background: #CD7F32; color: #1B0B3A; }
+
+  .winner-info { flex: 1; min-width: 0; }
+  .winner-rank-label { font-family: 'Bebas Neue', sans-serif; font-size: 11px; letter-spacing: 1.5px; line-height: 1; margin-bottom: 2px; }
+  .winner-card.gold .winner-rank-label { color: #FFD60A; }
+  .winner-card.silver .winner-rank-label { color: #E2E8F0; }
+  .winner-card.bronze .winner-rank-label { color: #CD7F32; }
+  .winner-name { font-family: 'Archivo Black', sans-serif; font-size: 13px; letter-spacing: 0; line-height: 1.1; color: #FFF8E7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+  .winner-prize { font-size: 10px; font-weight: 700; color: #FFD60A; letter-spacing: 0.5px; }
+
+  .winner-card.single-card { padding: 14px; }
+  .winner-card.single-card .avatar { width: 70px; height: 70px; }
+  .winner-card.single-card .avatar svg { width: 50px; height: 50px; }
+  .winner-card.single-card .winner-name { font-size: 16px; }
+  .winner-card.single-card .winner-prize { font-size: 11px; }
+
+  /* ===== PEMENANG: FOOTER ===== */
+  .footer {
+    padding: 18px 45px 22px;
+    background: rgba(15, 5, 38, 0.65);
+    border-top: 1px solid rgba(139, 92, 246, 0.25);
+    position: absolute; bottom: 0; left: 0; right: 0;
+  }
+  .congrats-banner {
+    text-align: center; padding: 14px;
+    background: linear-gradient(90deg, rgba(255, 214, 10, 0.15) 0%, rgba(255, 214, 10, 0.25) 50%, rgba(255, 214, 10, 0.15) 100%);
+    border: 1px dashed rgba(255, 214, 10, 0.5); border-radius: 6px; margin-bottom: 12px;
+  }
+  .congrats-title { font-family: 'Archivo Black', sans-serif; font-size: 18px; letter-spacing: 2px; color: #FFD60A; text-transform: uppercase; margin-bottom: 4px; }
+  .congrats-sub { font-size: 10px; letter-spacing: 1px; opacity: 0.85; text-transform: uppercase; }
+  .footer .bottom-info { align-items: center; padding-top: 0; border-top: none; margin-top: 0; }
+
+  /* ===== PRINT ===== */
+  @media print {
+    .top-nav { display: none; }
+    .page-content { padding-top: 0; }
+    body { background: #fff; }
+    .tab-panel { display: flex !important; padding: 20px; }
+    .pamflet { box-shadow: none; page-break-after: always; }
+    .panel-label { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP NAVIGATION -->
+<nav class="top-nav">
+  <div class="nav-brand">
+    <div class="nav-logo">🚀</div>
+    <div>
+      <div class="nav-title">ASTRO · WAREHOUSE STAR</div>
+      <div class="nav-subtitle">WH Cibitung · Warehouse Dry</div>
+    </div>
+  </div>
+  <div class="nav-divider"></div>
+
+  <button class="tab-btn active" onclick="switchTab('sosialisasi', this)">
+    <span class="tab-icon">📋</span>
+    Sosialisasi Program
+    <span class="tab-indicator">1</span>
+  </button>
+
+  <button class="tab-btn" onclick="switchTab('pemenang', this)">
+    <span class="tab-icon">🏆</span>
+    Pemenang Bulanan
+    <span class="tab-indicator">2</span>
+  </button>
+
+  <div class="nav-right">
+    <div class="nav-badge">📅 Mulai Mei 2026</div>
+    <div class="nav-badge">🏢 Proposal Management</div>
+  </div>
+</nav>
+
+<div class="page-content">
+
+  <!-- ===============================
+       TAB 1: SOSIALISASI
+  ================================ -->
+  <div id="tab-sosialisasi" class="tab-panel active">
+    <div class="panel-label">◆ PAMFLET SOSIALISASI — CONTOH DESAIN ◆</div>
+
+    <div class="pamflet pamflet-sos">
+      <div class="stars-bg"></div>
+      <div class="pattern-overlay"></div>
+
+      <div class="spark" style="top: 6%; left: 6%; font-size: 14px;">✦</div>
+      <div class="spark" style="top: 10%; right: 10%; font-size: 12px;">✧</div>
+      <div class="spark" style="top: 38%; left: 3%; font-size: 14px;">✦</div>
+      <div class="spark" style="top: 50%; right: 4%; font-size: 13px;">✧</div>
+      <div class="spark" style="bottom: 24%; left: 5%; font-size: 14px;">✦</div>
+      <div class="spark" style="bottom: 10%; right: 8%; font-size: 12px;">✧</div>
+
+      <svg class="corner-accent tl" viewBox="0 0 100 100">
+        <polygon points="50,5 61,39 97,39 68,60 79,95 50,75 21,95 32,60 3,39 39,39" fill="#FFD60A"/>
+      </svg>
+      <svg class="corner-accent br" viewBox="0 0 100 100">
+        <polygon points="50,5 61,39 97,39 68,60 79,95 50,75 21,95 32,60 3,39 39,39" fill="#8B5CF6"/>
+      </svg>
+
+      <!-- HEADER -->
+      <div class="header">
+        <div class="brand-row">
+          <div class="logo-box">
+            <div class="brand-logo">🚀</div>
+            <span>ASTRO · BE ASTRONAUTS</span>
+          </div>
+          <div class="period-badge">MULAI MEI 2026</div>
+        </div>
+        <div class="pre-title">★ PROGRAM APRESIASI BULANAN ★</div>
+        <h1 class="main-title">Warehouse<br>Star Leaderboard</h1>
+        <div class="warehouse-tag">📦 WH CIBITUNG · WAREHOUSE DRY</div>
+        <div class="tagline">Cari <span>3 BINTANG</span> Terbaik di Setiap Divisi!</div>
+      </div>
+
+      <!-- DIVISIONS -->
+      <div class="divisions-section">
+        <div class="section-header">
+          <span class="section-number">01</span>
+          <span class="section-title">DIVISI & PEMENANG</span>
+          <span class="section-line"></span>
+        </div>
+        <div class="divisions-grid">
+          <div class="division-card">
+            <div class="division-header">
+              <div class="division-name">📥 INBOUND</div>
+              <div class="division-slots">TOP 3</div>
+            </div>
+            <div class="podium">
+              <div class="place gold"><div class="place-rank">1</div><div class="place-label">Juara</div><div class="place-prize">Rp 500K<small>apresiasi</small></div></div>
+              <div class="place silver"><div class="place-rank">2</div><div class="place-label">Juara</div><div class="place-prize">Rp 300K<small>apresiasi</small></div></div>
+              <div class="place bronze"><div class="place-rank">3</div><div class="place-label">Juara</div><div class="place-prize">Rp 250K<small>apresiasi</small></div></div>
+            </div>
+          </div>
+          <div class="division-card">
+            <div class="division-header">
+              <div class="division-name">📤 OUTBOUND</div>
+              <div class="division-slots">TOP 3</div>
+            </div>
+            <div class="podium">
+              <div class="place gold"><div class="place-rank">1</div><div class="place-label">Juara</div><div class="place-prize">Rp 500K<small>apresiasi</small></div></div>
+              <div class="place silver"><div class="place-rank">2</div><div class="place-label">Juara</div><div class="place-prize">Rp 300K<small>apresiasi</small></div></div>
+              <div class="place bronze"><div class="place-rank">3</div><div class="place-label">Juara</div><div class="place-prize">Rp 250K<small>apresiasi</small></div></div>
+            </div>
+          </div>
+          <div class="division-card">
+            <div class="division-header">
+              <div class="division-name">📋 INVENTORY</div>
+              <div class="division-slots">TOP 3</div>
+            </div>
+            <div class="podium">
+              <div class="place gold"><div class="place-rank">1</div><div class="place-label">Juara</div><div class="place-prize">Rp 500K<small>apresiasi</small></div></div>
+              <div class="place silver"><div class="place-rank">2</div><div class="place-label">Juara</div><div class="place-prize">Rp 300K<small>apresiasi</small></div></div>
+              <div class="place bronze"><div class="place-rank">3</div><div class="place-label">Juara</div><div class="place-prize">Rp 250K<small>apresiasi</small></div></div>
+            </div>
+          </div>
+          <div class="division-card">
+            <div class="division-header">
+              <div class="division-name">🛠️ GENERAL / SUPPORT</div>
+              <div class="division-slots">TOP 1</div>
+            </div>
+            <div class="podium single">
+              <div class="place gold"><div class="place-rank">1</div><div class="place-label">Best Performer</div><div class="place-prize">Rp 500.000<small>apresiasi bulanan</small></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CRITERIA -->
+      <div class="criteria-section">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <span class="section-title">KRITERIA PENILAIAN</span>
+          <span class="section-line"></span>
+        </div>
+        <div class="criteria-grid">
+          <div class="criteria-item"><span class="criteria-icon">✅</span><div class="criteria-name">ATTENDANCE</div><div class="criteria-desc">Kehadiran 100%</div></div>
+          <div class="criteria-item"><span class="criteria-icon">⚡</span><div class="criteria-name">PRODUCTIVITY</div><div class="criteria-desc">Output tertinggi</div></div>
+          <div class="criteria-item"><span class="criteria-icon">⭐</span><div class="criteria-name">SPV SCORE</div><div class="criteria-desc">Penilaian SPV</div></div>
+          <div class="criteria-item"><span class="criteria-icon">🛡️</span><div class="criteria-name">SANCTION</div><div class="criteria-desc">Tanpa pelanggaran</div></div>
+        </div>
+      </div>
+
+      <!-- REQUIREMENTS STRIP -->
+      <div class="requirements-strip">
+        <div class="req-block">
+          <div class="req-icon">★</div>
+          <div class="req-content">
+            <h4>PENGUMUMAN PEMENANG</h4>
+            <p>Pemenang diumumkan setiap minggu pertama bulan berikutnya berdasarkan data kinerja yang telah divalidasi. Apresiasi diberikan bersama jadwal payroll reguler.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM AREA -->
+      <div class="bottom-area">
+        <div class="cta-bar">★ JADILAH BINTANGNYA! ★</div>
+        <div class="bottom-info">
+          <span>ASTRO · PT ASTRO TECHNOLOGIES INDONESIA</span>
+          <span>WH CIBITUNG — DRY</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===============================
+       TAB 2: PEMENANG
+  ================================ -->
+  <div id="tab-pemenang" class="tab-panel">
+    <div class="panel-label">◆ PAMFLET PEMENANG — CONTOH DESAIN ◆</div>
+
+    <div class="pamflet pamflet-pem">
+      <div class="stars-bg"></div>
+      <div class="pattern-overlay"></div>
+
+      <div class="confetti" style="top: 6%; left: 6%; color: #FFD60A;">✦</div>
+      <div class="confetti" style="top: 10%; right: 8%; color: #8B5CF6;">★</div>
+      <div class="confetti" style="top: 20%; left: 4%; color: #FFD60A; font-size: 14px;">✧</div>
+      <div class="confetti" style="top: 35%; right: 3%; color: #FFD60A; font-size: 15px;">✦</div>
+      <div class="confetti" style="top: 55%; left: 3%; color: #8B5CF6; font-size: 13px;">★</div>
+      <div class="confetti" style="top: 70%; right: 4%; color: #FFD60A; font-size: 14px;">✧</div>
+      <div class="confetti" style="bottom: 15%; left: 5%; color: #FFD60A;">✦</div>
+      <div class="confetti" style="bottom: 8%; right: 7%; color: #8B5CF6; font-size: 14px;">★</div>
+
+      <svg class="corner-accent tl" viewBox="0 0 100 100">
+        <polygon points="50,5 61,39 97,39 68,60 79,95 50,75 21,95 32,60 3,39 39,39" fill="#FFD60A"/>
+      </svg>
+      <svg class="corner-accent br" viewBox="0 0 100 100">
+        <polygon points="50,5 61,39 97,39 68,60 79,95 50,75 21,95 32,60 3,39 39,39" fill="#8B5CF6"/>
+      </svg>
+
+      <!-- HEADER -->
+      <div class="header header-pem">
+        <div class="brand-row brand-row-pem">
+          <div class="logo-box">
+            <div class="brand-logo brand-logo-pem">🚀</div>
+            <span>ASTRO · BE ASTRONAUTS</span>
+          </div>
+          <div class="period-badge period-badge-pem">PERIODE · MEI 2026</div>
+        </div>
+        <div class="champion-crown">👑</div>
+        <div class="pre-title pre-title-pem">★ SELAMAT KEPADA PARA JUARA ★</div>
+        <h1 class="main-title main-title-pem">Mitra<br>Leaderboard</h1>
+        <div class="warehouse-tag warehouse-tag-pem">📦 WH CIBITUNG · WAREHOUSE DRY</div>
+        <div class="subtitle">Warehouse Star Leaderboard · Top Performer Bulanan</div>
+      </div>
+
+      <!-- DIVISIONS -->
+      <div class="divisions-container">
+
+        <!-- INBOUND -->
+        <div class="division-block">
+          <div class="division-label">
+            <span class="division-label-name">📥 INBOUND</span>
+            <span class="division-label-sub">Top 3 Performer</span>
+          </div>
+          <div class="winners-row">
+            <div class="winner-card gold">
+              <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge gold">1</div></div>
+              <div class="winner-info"><div class="winner-rank-label">JUARA 1</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 500.000</div></div>
+            </div>
+            <div class="winner-card silver">
+              <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge silver">2</div></div>
+              <div class="winner-info"><div class="winner-rank-label">JUARA 2</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 300.000</div></div>
+            </div>
+            <div class="winner-card bronze">
+              <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge bronze">3</div></div>
+              <div class="winner-info"><div class="winner-rank-label">JUARA 3</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 250.000</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OUTBOUND -->
+        <div class="division-block">
+          <div class="division-label">
+            <span class="division-label-name">📤 OUTBOUND</span>
+            <span class="division-label-sub">Top 3 Performer</span>
+          </div>
+          <div class="winners-row">
+            <div class="winner-card gold">
+              <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge gold">1</div></div>
+              <div class="winner-info"><div class="winner-rank-label">JUARA 1</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 500.000</div></div>
+            </div>
+            <div class="winner-card silver">
+              <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge silver">2</div></div>
+              <div class="winner-info"><div class="winner-rank-label">JUARA 2</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 300.000</div></div>
+            </div>
+            <div class="winner-card bronze">
+              <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge bronze">3</div></div>
+              <div class="winner-info"><div class="winner-rank-label">JUARA 3</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 250.000</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- INVENTORY -->
+        <div class="division-block">
+          <div class="division-label">
+            <span class="division-label-name">📋 INVENTORY</span>
+            <span class="division-label-sub">Top 3 Performer</span>
+          </div>
+          <div class="winners-row">
+            <div class="winner-card gold">
+              <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge gold">1</div></div>
+              <div class="winner-info"><div class="winner-rank-label">JUARA 1</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 500.000</div></div>
+            </div>
+            <div class="winner-card silver">
+              <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge silver">2</div></div>
+              <div class="winner-info"><div class="winner-rank-label">JUARA 2</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 300.000</div></div>
+            </div>
+            <div class="winner-card bronze">
+              <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge bronze">3</div></div>
+              <div class="winner-info"><div class="winner-rank-label">JUARA 3</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 250.000</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GENERAL / SUPPORT -->
+        <div class="division-block">
+          <div class="division-label">
+            <span class="division-label-name">🛠️ GENERAL / SUPPORT</span>
+            <span class="division-label-sub">Best Performer</span>
+          </div>
+          <div class="winners-row single">
+            <div class="winner-card gold single-card">
+              <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge gold">1</div></div>
+              <div class="winner-info"><div class="winner-rank-label">BEST PERFORMER</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 500.000</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <div class="congrats-banner">
+          <div class="congrats-title">🎉 Selamat kepada para Pemenang! 🎉</div>
+          <div class="congrats-sub">Terima kasih atas dedikasi dan performa terbaiknya</div>
+        </div>
+        <div class="bottom-info">
+          <span>ASTRO · PT ASTRO TECHNOLOGIES INDONESIA</span>
+          <span>WAREHOUSE STAR LEADERBOARD · MEI 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function switchTab(tabName, btn) {
+    // Hide all panels
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    // Deactivate all buttons
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    // Show selected panel and activate button
+    document.getElementById('tab-' + tabName).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
