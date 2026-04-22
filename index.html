@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASTRO — Warehouse Star Leaderboard | Proposal Program</title>
+<title>ASTRO — Warehouse Star Leaderboard | Blue Theme</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,24 +12,21 @@
 
   body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: #050210;
+    background: #dce7f3;
     min-height: 100vh;
   }
 
   /* ===== TOP NAV BAR ===== */
   .top-nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 100;
-    background: rgba(10, 4, 22, 0.95);
+    background: rgba(6, 43, 92, 0.97);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+    border-bottom: 1px solid rgba(79, 179, 255, 0.3);
     padding: 0 40px;
     display: flex;
     align-items: center;
-    gap: 0;
     height: 60px;
   }
 
@@ -42,117 +39,84 @@
   }
 
   .nav-logo {
-    width: 32px;
-    height: 32px;
+    width: 32px; height: 32px;
     border-radius: 50%;
-    background: #FFD60A;
-    color: #1B0B3A;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: linear-gradient(135deg, #0A4DA2 0%, #1E7FE8 100%);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
     font-size: 16px;
-    box-shadow: 0 0 12px rgba(255, 214, 10, 0.4);
+    box-shadow: 0 0 12px rgba(30, 127, 232, 0.5);
   }
 
   .nav-title {
     font-family: 'Archivo Black', sans-serif;
-    font-size: 14px;
-    letter-spacing: 1px;
-    color: #FFD60A;
-    text-transform: uppercase;
+    font-size: 14px; letter-spacing: 1px;
+    color: #4FB3FF; text-transform: uppercase;
   }
 
   .nav-subtitle {
     font-size: 9px;
-    color: rgba(255, 248, 231, 0.5);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 1px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 2px; text-transform: uppercase; margin-top: 1px;
   }
 
   .nav-divider {
-    width: 1px;
-    height: 30px;
-    background: rgba(139, 92, 246, 0.35);
+    width: 1px; height: 30px;
+    background: rgba(79, 179, 255, 0.3);
     margin-right: 28px;
   }
 
   .tab-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0 20px;
-    height: 60px;
-    background: none;
-    border: none;
-    cursor: pointer;
+    display: flex; align-items: center; gap: 8px;
+    padding: 0 20px; height: 60px;
+    background: none; border: none; cursor: pointer;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(255, 248, 231, 0.45);
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
     border-bottom: 3px solid transparent;
     transition: all 0.25s ease;
-    position: relative;
-    bottom: -1px;
+    position: relative; bottom: -1px;
   }
 
-  .tab-btn:hover {
-    color: rgba(255, 248, 231, 0.8);
-  }
+  .tab-btn:hover { color: rgba(255,255,255,0.75); }
 
   .tab-btn.active {
-    color: #FFD60A;
-    border-bottom-color: #FFD60A;
+    color: #4FB3FF;
+    border-bottom-color: #4FB3FF;
   }
 
-  .tab-btn .tab-icon {
-    font-size: 16px;
-  }
+  .tab-btn .tab-icon { font-size: 16px; }
 
   .tab-indicator {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    font-size: 9px;
-    font-weight: 800;
-    background: rgba(139, 92, 246, 0.3);
-    color: #8B5CF6;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; border-radius: 50%;
+    font-size: 9px; font-weight: 800;
+    background: rgba(79, 179, 255, 0.15);
+    color: rgba(79, 179, 255, 0.6);
     margin-left: 2px;
   }
 
   .tab-btn.active .tab-indicator {
-    background: rgba(255, 214, 10, 0.2);
-    color: #FFD60A;
+    background: rgba(79, 179, 255, 0.25);
+    color: #4FB3FF;
   }
 
   .nav-right {
     margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display: flex; align-items: center; gap: 12px;
   }
 
   .nav-badge {
-    padding: 4px 12px;
-    border-radius: 20px;
-    background: rgba(255, 214, 10, 0.12);
-    border: 1px solid rgba(255, 214, 10, 0.3);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #FFD60A;
-    text-transform: uppercase;
+    padding: 4px 12px; border-radius: 20px;
+    background: rgba(30, 127, 232, 0.15);
+    border: 1px solid rgba(79, 179, 255, 0.35);
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 2px; color: #4FB3FF; text-transform: uppercase;
   }
 
   /* ===== PAGE CONTENT ===== */
-  .page-content {
-    padding-top: 60px;
-  }
+  .page-content { padding-top: 60px; }
 
   .tab-panel {
     display: none;
@@ -163,88 +127,59 @@
     min-height: calc(100vh - 60px);
   }
 
-  .tab-panel.active {
-    display: flex;
-  }
+  .tab-panel.active { display: flex; }
 
   .panel-label {
-    color: #8B5CF6;
+    color: #0A4DA2;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 4px;
-    text-align: center;
+    font-size: 18px; letter-spacing: 4px; text-align: center;
   }
 
-  /* ===== PAMFLET (shared) ===== */
+  /* ===== PAMFLET BASE ===== */
   .pamflet {
-    width: 794px;
-    height: 1123px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 30px 80px rgba(90, 42, 140, 0.5);
-    color: #FFF8E7;
-    display: flex;
-    flex-direction: column;
+    width: 794px; height: 1123px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 30px 80px rgba(10, 77, 162, 0.35);
+    color: #062B5C;
+    display: flex; flex-direction: column;
   }
 
-  /* ==============================
-     SOSIALISASI PAMFLET STYLES
-  ============================== */
+  /* ===== SOSIALISASI BG ===== */
   .pamflet-sos {
     background:
-      radial-gradient(ellipse at top right, rgba(255, 214, 10, 0.18) 0%, transparent 50%),
-      radial-gradient(ellipse at bottom left, rgba(139, 92, 246, 0.35) 0%, transparent 55%),
-      radial-gradient(ellipse at center, rgba(90, 42, 140, 0.5) 0%, transparent 70%),
-      linear-gradient(160deg, #0F0526 0%, #1B0B3A 40%, #2D1854 100%);
+      radial-gradient(ellipse at top right, rgba(79, 179, 255, 0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at bottom left, rgba(30, 127, 232, 0.15) 0%, transparent 55%),
+      linear-gradient(160deg, #FFFFFF 0%, #F5F9FF 45%, #E8F2FF 100%);
   }
 
-  /* ==============================
-     PEMENANG PAMFLET STYLES
-  ============================== */
+  /* ===== PEMENANG BG ===== */
   .pamflet-pem {
     background:
-      radial-gradient(ellipse at top right, rgba(255, 214, 10, 0.18) 0%, transparent 50%),
-      radial-gradient(ellipse at bottom left, rgba(139, 92, 246, 0.4) 0%, transparent 55%),
-      radial-gradient(ellipse at center top, rgba(255, 214, 10, 0.1) 0%, transparent 40%),
-      linear-gradient(160deg, #0F0526 0%, #1B0B3A 40%, #2D1854 100%);
+      radial-gradient(ellipse at top, rgba(79, 179, 255, 0.22) 0%, transparent 55%),
+      radial-gradient(ellipse at bottom right, rgba(30, 127, 232, 0.15) 0%, transparent 55%),
+      linear-gradient(170deg, #FFFFFF 0%, #F5F9FF 50%, #E8F2FF 100%);
   }
 
   /* ===== SHARED BG ELEMENTS ===== */
-  .stars-bg {
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.7), transparent),
-      radial-gradient(1px 1px at 60% 15%, rgba(255,255,255,0.5), transparent),
-      radial-gradient(2px 2px at 80% 40%, rgba(255,214,10,0.6), transparent),
-      radial-gradient(1px 1px at 35% 70%, rgba(255,255,255,0.6), transparent),
-      radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.5), transparent),
-      radial-gradient(2px 2px at 15% 85%, rgba(139,92,246,0.7), transparent),
-      radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.4), transparent),
-      radial-gradient(1px 1px at 70% 65%, rgba(255,255,255,0.5), transparent);
-    pointer-events: none;
-    opacity: 0.8;
+  .wave-bg {
+    position: absolute; inset: 0;
+    pointer-events: none; opacity: 0.5;
   }
 
   .pattern-overlay {
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(45deg, transparent 0 22px, rgba(255,255,255,0.02) 22px 23px);
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent 0 22px, rgba(10, 77, 162, 0.025) 22px 23px);
     pointer-events: none;
   }
 
   .spark, .confetti {
-    position: absolute;
-    pointer-events: none;
+    position: absolute; pointer-events: none;
   }
-  .spark { color: rgba(255, 214, 10, 0.2); }
-  .confetti { font-size: 18px; opacity: 0.35; }
+  .spark { color: rgba(30, 127, 232, 0.28); }
+  .confetti { font-size: 16px; opacity: 0.35; }
 
   .corner-accent {
-    position: absolute;
-    width: 240px;
-    height: 240px;
-    opacity: 0.12;
+    position: absolute; width: 240px; height: 240px; opacity: 0.08;
   }
   .corner-accent.tl { top: -60px; left: -60px; transform: rotate(-15deg); }
   .corner-accent.br { bottom: -60px; right: -60px; transform: rotate(165deg); }
@@ -254,103 +189,83 @@
     position: relative;
     padding: 24px 45px 18px;
     text-align: center;
-    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    border-bottom: 1px solid rgba(10, 77, 162, 0.15);
     flex-shrink: 0;
+    background: linear-gradient(180deg, rgba(10, 77, 162, 0.04) 0%, transparent 100%);
   }
 
   .header-pem {
-    padding: 30px 50px 22px;
+    padding: 22px 45px 18px;
+    background: linear-gradient(180deg, rgba(10, 77, 162, 0.05) 0%, transparent 100%);
   }
 
   .brand-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
     margin-bottom: 14px;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #FFD60A;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 700; color: #0A4DA2;
   }
+  .brand-row-pem { margin-bottom: 10px; }
 
-  .brand-row-pem { margin-bottom: 18px; }
-
-  .brand-row .logo-box {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .brand-row .logo-box { display: inline-flex; align-items: center; gap: 10px; }
 
   .brand-logo {
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    background: #FFD60A; color: #1B0B3A;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: linear-gradient(135deg, #0A4DA2 0%, #1E7FE8 100%);
+    color: #fff;
     display: flex; align-items: center; justify-content: center;
     font-size: 16px;
-    box-shadow: 0 0 14px rgba(255, 214, 10, 0.5);
+    box-shadow: 0 4px 14px rgba(10, 77, 162, 0.35);
   }
-  .brand-logo-pem { width: 32px; height: 32px; font-size: 18px; }
 
   .period-badge {
-    display: inline-block;
-    padding: 6px 14px;
-    border-radius: 20px;
-    background: #FFD60A; color: #1B0B3A;
-    font-weight: 800; font-size: 10px; letter-spacing: 2px;
+    display: inline-block; padding: 6px 14px; border-radius: 20px;
+    background: linear-gradient(135deg, #0A4DA2 0%, #1E7FE8 100%);
+    color: #fff; font-weight: 800; font-size: 10px; letter-spacing: 2px;
+    box-shadow: 0 4px 12px rgba(10, 77, 162, 0.3);
   }
-  .period-badge-pem { padding: 8px 16px; font-size: 11px; }
 
   .champion-crown {
-    font-size: 40px;
-    margin-bottom: 4px;
-    filter: drop-shadow(0 0 20px rgba(255, 214, 10, 0.6));
+    font-size: 36px; margin-bottom: 2px;
+    filter: drop-shadow(0 4px 18px rgba(255, 199, 44, 0.55));
   }
 
   .pre-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px; letter-spacing: 8px; margin-bottom: 4px;
-    color: #FFD60A; opacity: 0.95;
+    font-size: 20px; letter-spacing: 8px; margin-bottom: 4px; color: #1E7FE8;
   }
-  .pre-title-pem { margin-bottom: 6px; }
+  .pre-title-pem { font-size: 18px; margin-bottom: 2px; }
 
   .main-title {
     font-family: 'Archivo Black', sans-serif;
-    font-size: 62px; line-height: 0.9;
-    letter-spacing: -2px; text-transform: uppercase;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FFD60A 60%, #FFA500 100%);
+    font-size: 62px; line-height: 0.9; letter-spacing: -2px; text-transform: uppercase;
+    background: linear-gradient(180deg, #1E7FE8 0%, #0A4DA2 60%, #062B5C 100%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 4px 16px rgba(255, 214, 10, 0.3));
+    filter: drop-shadow(0 4px 12px rgba(10, 77, 162, 0.2));
   }
-  .main-title-pem { font-size: 64px; line-height: 0.92; }
+  .main-title-pem { font-size: 58px; }
 
   .warehouse-tag {
     display: inline-flex; align-items: center; gap: 10px;
     margin-top: 12px; padding: 8px 20px;
-    border: 2px solid #FFD60A; border-radius: 4px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px; letter-spacing: 4px;
-    background: rgba(90, 42, 140, 0.25); color: #FFD60A;
+    border: 2px solid #0A4DA2; border-radius: 4px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 4px;
+    background: #fff; color: #0A4DA2;
+    box-shadow: 0 4px 12px rgba(10, 77, 162, 0.12);
   }
-  .warehouse-tag-pem { margin-top: 14px; padding: 8px 22px; background: rgba(90, 42, 140, 0.3); }
+  .warehouse-tag-pem { margin-top: 10px; padding: 6px 18px; font-size: 18px; }
 
   .tagline {
     margin-top: 14px; font-size: 13px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase; color: #FFF8E7;
+    letter-spacing: 2px; text-transform: uppercase; color: #062B5C;
   }
-  .tagline span { font-weight: 800; color: #FFD60A; }
-
-  .subtitle {
-    margin-top: 16px; font-size: 12px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase;
-    color: #FFF8E7; opacity: 0.85;
-  }
+  .tagline span { font-weight: 800; color: #1E7FE8; }
 
   /* ===== SECTION HEADER ===== */
   .section-header {
     display: flex; align-items: center; gap: 12px;
-    margin-bottom: 14px; color: #FFD60A;
+    margin-bottom: 14px; color: #0A4DA2;
   }
   .section-number { font-family: 'Archivo Black', sans-serif; font-size: 28px; line-height: 1; }
   .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; line-height: 1; }
@@ -358,164 +273,226 @@
 
   /* ===== SOSIALISASI: DIVISIONS ===== */
   .divisions-section { padding: 20px 40px 10px; position: relative; z-index: 2; }
-
   .divisions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
   .division-card {
-    background: rgba(90, 42, 140, 0.22);
-    border: 1px solid rgba(139, 92, 246, 0.3);
+    background: #FFFFFF;
+    border: 1px solid rgba(10, 77, 162, 0.15);
     border-radius: 10px; padding: 12px 14px;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 14px rgba(10, 77, 162, 0.08);
   }
 
   .division-header {
     display: flex; justify-content: space-between; align-items: center;
     margin-bottom: 10px; padding-bottom: 8px;
-    border-bottom: 1px dashed rgba(139, 92, 246, 0.35);
+    border-bottom: 1px dashed rgba(10, 77, 162, 0.25);
   }
-  .division-name { font-family: 'Archivo Black', sans-serif; font-size: 17px; letter-spacing: 1px; color: #FFD60A; }
+  .division-name { font-family: 'Archivo Black', sans-serif; font-size: 17px; letter-spacing: 1px; color: #0A4DA2; }
   .division-slots {
     font-family: 'Bebas Neue', sans-serif; font-size: 14px; padding: 2px 10px;
-    border-radius: 4px; background: linear-gradient(135deg, #5A2A8C 0%, #8B5CF6 100%); color: #fff;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #0A4DA2 0%, #1E7FE8 100%); color: #fff;
   }
 
   .podium { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
   .podium.single { grid-template-columns: 1fr; }
 
-  .place {
-    text-align: center; padding: 8px 4px; border-radius: 6px;
-  }
+  .place { text-align: center; padding: 8px 4px; border-radius: 6px; }
   .place-rank { font-family: 'Archivo Black', sans-serif; font-size: 20px; line-height: 1; margin-bottom: 2px; }
-  .place-label { font-size: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: 0.85; margin-bottom: 4px; }
-  .place-prize { font-family: 'Archivo Black', sans-serif; font-size: 13px; letter-spacing: -0.5px; }
-  .place-prize small { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8px; font-weight: 600; opacity: 0.7; display: block; margin-top: 1px; }
+  .place-label { font-size: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: 0.75; margin-bottom: 4px; color: #062B5C; }
+  .place-prize { font-family: 'Archivo Black', sans-serif; font-size: 13px; letter-spacing: -0.5px; color: #0A4DA2; }
+  .place-prize small { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8px; font-weight: 600; opacity: 0.65; display: block; margin-top: 1px; color: #062B5C; }
 
-  .place.gold { background: linear-gradient(135deg, rgba(255,214,10,0.22) 0%, rgba(255,165,0,0.08) 100%); border: 1px solid rgba(255,214,10,0.45); }
-  .place.gold .place-rank { color: #FFD60A; }
-  .place.silver { background: linear-gradient(135deg, rgba(226,232,240,0.16) 0%, rgba(148,163,184,0.06) 100%); border: 1px solid rgba(226,232,240,0.35); }
-  .place.silver .place-rank { color: #E2E8F0; }
-  .place.bronze { background: linear-gradient(135deg, rgba(205,127,50,0.2) 0%, rgba(139,69,19,0.08) 100%); border: 1px solid rgba(205,127,50,0.4); }
-  .place.bronze .place-rank { color: #CD7F32; }
+  .place.gold { background: linear-gradient(135deg, rgba(255, 199, 44, 0.2) 0%, rgba(255, 199, 44, 0.08) 100%); border: 1px solid rgba(255, 199, 44, 0.55); }
+  .place.gold .place-rank { color: #D69A00; }
+  .place.silver { background: linear-gradient(135deg, rgba(79, 179, 255, 0.18) 0%, rgba(79, 179, 255, 0.05) 100%); border: 1px solid rgba(79, 179, 255, 0.45); }
+  .place.silver .place-rank { color: #1E7FE8; }
+  .place.bronze { background: linear-gradient(135deg, rgba(10, 77, 162, 0.15) 0%, rgba(10, 77, 162, 0.05) 100%); border: 1px solid rgba(10, 77, 162, 0.35); }
+  .place.bronze .place-rank { color: #062B5C; }
 
   /* ===== SOSIALISASI: CRITERIA ===== */
   .criteria-section { padding: 8px 40px 12px; position: relative; z-index: 2; }
   .criteria-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
   .criteria-item {
     text-align: center; padding: 10px 6px;
-    background: rgba(90, 42, 140, 0.2);
-    border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 8px;
+    background: #FFFFFF;
+    border: 1px solid rgba(10, 77, 162, 0.15); border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(10, 77, 162, 0.06);
   }
   .criteria-icon { font-size: 22px; margin-bottom: 4px; display: block; }
-  .criteria-name { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1px; color: #FFD60A; }
-  .criteria-desc { font-size: 8px; opacity: 0.7; margin-top: 1px; line-height: 1.3; }
+  .criteria-name { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1px; color: #0A4DA2; }
+  .criteria-desc { font-size: 8px; opacity: 0.7; margin-top: 1px; line-height: 1.3; color: #062B5C; }
 
   /* ===== SOSIALISASI: REQUIREMENTS STRIP ===== */
   .requirements-strip {
     margin: 0 40px; padding: 14px 22px;
-    background: linear-gradient(90deg, rgba(255,214,10,0.12) 0%, rgba(139,92,246,0.15) 100%);
-    border: 1px solid rgba(255,214,10,0.3); border-radius: 10px;
+    background: linear-gradient(90deg, rgba(79, 179, 255, 0.12) 0%, rgba(30, 127, 232, 0.15) 100%);
+    border: 1px solid rgba(10, 77, 162, 0.25); border-radius: 10px;
     display: flex; justify-content: center; position: relative; z-index: 2;
   }
-  .req-block { display: flex; gap: 10px; align-items: flex-start; }
+  .req-block { display: flex; gap: 12px; align-items: flex-start; }
   .req-icon {
-    flex-shrink: 0; width: 32px; height: 32px;
-    background: #FFD60A; color: #1B0B3A; border-radius: 8px;
+    flex-shrink: 0; width: 34px; height: 34px;
+    background: linear-gradient(135deg, #0A4DA2 0%, #1E7FE8 100%);
+    color: #fff; border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
     font-size: 16px; font-weight: 800;
+    box-shadow: 0 4px 10px rgba(10, 77, 162, 0.25);
   }
-  .req-content h4 { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 1.5px; color: #FFD60A; margin-bottom: 3px; line-height: 1; }
-  .req-content p { font-size: 9.5px; line-height: 1.45; opacity: 0.9; }
+  .req-content h4 { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 1.5px; color: #0A4DA2; margin-bottom: 3px; line-height: 1; }
+  .req-content p { font-size: 9.5px; line-height: 1.45; color: #062B5C; opacity: 0.88; }
 
   /* ===== SOSIALISASI: BOTTOM ===== */
   .bottom-area { margin-top: auto; padding: 12px 40px 18px; position: relative; z-index: 2; }
   .cta-bar {
-    text-align: center; padding: 12px; border-radius: 6px;
-    background: #FFD60A; color: #1B0B3A;
-    font-family: 'Archivo Black', sans-serif; font-size: 20px; letter-spacing: 3px;
-    text-transform: uppercase; box-shadow: 0 0 24px rgba(255, 214, 10, 0.25);
+    text-align: center; padding: 14px; border-radius: 6px;
+    background: linear-gradient(135deg, #0A4DA2 0%, #1E7FE8 50%, #0A4DA2 100%);
+    color: #FFFFFF;
+    font-family: 'Archivo Black', sans-serif; font-size: 22px; letter-spacing: 3px;
+    text-transform: uppercase;
+    box-shadow: 0 6px 24px rgba(10, 77, 162, 0.35);
   }
   .bottom-info {
-    display: flex; justify-content: space-between; margin-top: 10px; padding-top: 10px;
-    border-top: 1px solid rgba(139, 92, 246, 0.25);
-    font-size: 9px; opacity: 0.7; letter-spacing: 1.5px; text-transform: uppercase; color: #FFD60A;
+    display: flex; justify-content: space-between;
+    margin-top: 10px; padding-top: 10px;
+    border-top: 1px solid rgba(10, 77, 162, 0.15);
+    font-size: 9px; opacity: 0.75; letter-spacing: 1.5px; text-transform: uppercase; color: #0A4DA2;
   }
 
-  /* ===== PEMENANG: DIVISION BLOCKS ===== */
-  .divisions-container { padding: 20px 38px 10px; }
-  .division-block { margin-bottom: 14px; }
+  /* ===== PEMENANG: DIVISIONS CONTAINER ===== */
+  .divisions-container {
+    padding: 16px 36px 8px;
+    position: relative; z-index: 2;
+    flex: 1;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .division-block { display: flex; flex-direction: column; }
+
   .division-label {
-    display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
-    padding: 6px 14px;
-    background: linear-gradient(90deg, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0.05) 100%);
-    border-left: 3px solid #FFD60A; border-radius: 4px;
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 8px; padding: 5px 14px;
+    background: linear-gradient(90deg, rgba(10, 77, 162, 0.15) 0%, rgba(30, 127, 232, 0.05) 100%);
+    border-left: 4px solid #1E7FE8; border-radius: 4px;
   }
-  .division-label-name { font-family: 'Archivo Black', sans-serif; font-size: 16px; letter-spacing: 1.5px; color: #FFD60A; }
-  .division-label-sub { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; margin-left: auto; }
+  .division-label-name { font-family: 'Archivo Black', sans-serif; font-size: 15px; letter-spacing: 1.5px; color: #0A4DA2; }
+  .division-label-sub { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.65; margin-left: auto; color: #062B5C; }
 
-  .winners-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-  .winners-row.single { grid-template-columns: 1fr; max-width: 240px; margin: 0 auto; }
+  /* ===== PEMENANG: WINNER CARDS ===== */
+  .winners-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 10px; align-items: stretch; }
+  .winners-row.single { grid-template-columns: 1fr; max-width: 100%; }
 
   .winner-card {
-    display: flex; align-items: center; gap: 10px; padding: 10px;
-    background: rgba(90, 42, 140, 0.22);
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    border-radius: 10px; backdrop-filter: blur(8px); position: relative;
+    display: flex; align-items: center; gap: 12px; padding: 12px;
+    border-radius: 12px; position: relative;
+    background: #FFFFFF;
+    border: 1px solid rgba(10, 77, 162, 0.15);
+    box-shadow: 0 4px 12px rgba(10, 77, 162, 0.08);
   }
-  .winner-card.gold { background: linear-gradient(135deg, rgba(255, 214, 10, 0.18) 0%, rgba(90, 42, 140, 0.25) 100%); border: 1px solid rgba(255, 214, 10, 0.5); box-shadow: 0 0 20px rgba(255, 214, 10, 0.15); }
-  .winner-card.silver { background: linear-gradient(135deg, rgba(226, 232, 240, 0.15) 0%, rgba(90, 42, 140, 0.25) 100%); border: 1px solid rgba(226, 232, 240, 0.4); }
-  .winner-card.bronze { background: linear-gradient(135deg, rgba(205, 127, 50, 0.18) 0%, rgba(90, 42, 140, 0.25) 100%); border: 1px solid rgba(205, 127, 50, 0.45); }
 
-  .avatar-wrapper { position: relative; flex-shrink: 0; }
+  .winner-card.champion {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF8E0 100%);
+    border: 2px solid #FFC72C;
+    box-shadow: 0 0 0 4px rgba(255, 199, 44, 0.15), 0 8px 24px rgba(255, 199, 44, 0.25), 0 4px 12px rgba(10, 77, 162, 0.1);
+    padding: 14px 14px 14px 16px;
+    overflow: hidden;
+  }
+
+  .winner-card.champion::before {
+    content: '';
+    position: absolute; top: -50%; left: -10%; width: 70%; height: 200%;
+    background: radial-gradient(ellipse, rgba(255, 199, 44, 0.25) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .winner-card.champion::after {
+    content: '★ CHAMPION ★';
+    position: absolute; top: 8px; right: -36px;
+    background: linear-gradient(90deg, #FFC72C 0%, #FFA500 100%);
+    color: #062B5C;
+    font-family: 'Archivo Black', sans-serif; font-size: 9px;
+    padding: 3px 40px; letter-spacing: 1px;
+    transform: rotate(35deg);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .winner-card.silver { background: linear-gradient(135deg, #FFFFFF 0%, #EAF4FF 100%); border: 1px solid rgba(79, 179, 255, 0.55); }
+  .winner-card.bronze { background: linear-gradient(135deg, #FFFFFF 0%, #E8F0FA 100%); border: 1px solid rgba(10, 77, 162, 0.35); }
+
+  .avatar-wrapper { position: relative; flex-shrink: 0; z-index: 2; }
+
   .avatar {
-    width: 58px; height: 58px; border-radius: 50%;
-    background: linear-gradient(135deg, #5A2A8C 0%, #8B5CF6 100%);
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0A4DA2 0%, #1E7FE8 100%);
     display: flex; align-items: center; justify-content: center;
     border: 3px solid; position: relative; overflow: hidden;
   }
-  .winner-card.gold .avatar { border-color: #FFD60A; box-shadow: 0 0 12px rgba(255, 214, 10, 0.4); }
-  .winner-card.silver .avatar { border-color: #E2E8F0; }
-  .winner-card.bronze .avatar { border-color: #CD7F32; }
-  .avatar svg { width: 42px; height: 42px; fill: rgba(255, 255, 255, 0.85); }
+
+  .silver .avatar, .bronze .avatar { width: 56px; height: 56px; }
+  .silver .avatar svg, .bronze .avatar svg { width: 40px; height: 40px; }
+
+  .champion .avatar {
+    width: 78px; height: 78px;
+    background: linear-gradient(135deg, #0A4DA2 0%, #1E7FE8 50%, #4FB3FF 100%);
+    box-shadow: 0 0 0 4px #FFC72C, 0 6px 20px rgba(255, 199, 44, 0.4);
+    border-color: #FFFFFF; border-width: 3px;
+  }
+  .champion .avatar svg { width: 56px; height: 56px; }
+
+  .winner-card.silver .avatar { border-color: #1E7FE8; }
+  .winner-card.bronze .avatar { border-color: #0A4DA2; }
+  .avatar svg { fill: rgba(255, 255, 255, 0.92); }
 
   .rank-badge {
     position: absolute; bottom: -4px; right: -4px;
     width: 22px; height: 22px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Archivo Black', sans-serif; font-size: 12px; border: 2px solid #1B0B3A;
+    font-family: 'Archivo Black', sans-serif; font-size: 12px;
+    border: 2px solid #FFFFFF;
   }
-  .rank-badge.gold { background: #FFD60A; color: #1B0B3A; }
-  .rank-badge.silver { background: #E2E8F0; color: #1B0B3A; }
-  .rank-badge.bronze { background: #CD7F32; color: #1B0B3A; }
+  .champion .rank-badge { width: 28px; height: 28px; font-size: 14px; box-shadow: 0 2px 8px rgba(255, 199, 44, 0.5); }
 
-  .winner-info { flex: 1; min-width: 0; }
-  .winner-rank-label { font-family: 'Bebas Neue', sans-serif; font-size: 11px; letter-spacing: 1.5px; line-height: 1; margin-bottom: 2px; }
-  .winner-card.gold .winner-rank-label { color: #FFD60A; }
-  .winner-card.silver .winner-rank-label { color: #E2E8F0; }
-  .winner-card.bronze .winner-rank-label { color: #CD7F32; }
-  .winner-name { font-family: 'Archivo Black', sans-serif; font-size: 13px; letter-spacing: 0; line-height: 1.1; color: #FFF8E7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
-  .winner-prize { font-size: 10px; font-weight: 700; color: #FFD60A; letter-spacing: 0.5px; }
+  .rank-badge.gold { background: linear-gradient(135deg, #FFC72C 0%, #FFA500 100%); color: #062B5C; }
+  .rank-badge.silver { background: linear-gradient(135deg, #4FB3FF 0%, #1E7FE8 100%); color: #fff; }
+  .rank-badge.bronze { background: linear-gradient(135deg, #1E7FE8 0%, #0A4DA2 100%); color: #fff; }
 
-  .winner-card.single-card { padding: 14px; }
-  .winner-card.single-card .avatar { width: 70px; height: 70px; }
-  .winner-card.single-card .avatar svg { width: 50px; height: 50px; }
-  .winner-card.single-card .winner-name { font-size: 16px; }
-  .winner-card.single-card .winner-prize { font-size: 11px; }
+  .winner-info { flex: 1; min-width: 0; z-index: 2; position: relative; }
+
+  .winner-rank-label { font-family: 'Bebas Neue', sans-serif; font-size: 11px; letter-spacing: 1.5px; line-height: 1; margin-bottom: 3px; }
+  .champion .winner-rank-label { font-size: 14px; color: #D69A00; letter-spacing: 2px; }
+  .winner-card.silver .winner-rank-label { color: #1E7FE8; }
+  .winner-card.bronze .winner-rank-label { color: #0A4DA2; }
+
+  .winner-name { font-family: 'Archivo Black', sans-serif; font-size: 14px; line-height: 1.1; color: #062B5C; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px; }
+  .champion .winner-name { font-size: 18px; color: #0A4DA2; }
+
+  .winner-prize {
+    display: inline-block; font-family: 'Archivo Black', sans-serif; font-size: 11px;
+    padding: 2px 8px; border-radius: 4px;
+    background: rgba(10, 77, 162, 0.08); color: #0A4DA2; letter-spacing: 0.5px;
+  }
+  .champion .winner-prize {
+    font-size: 13px; padding: 3px 10px;
+    background: linear-gradient(90deg, #FFC72C 0%, #FFA500 100%);
+    color: #062B5C; box-shadow: 0 2px 6px rgba(255, 199, 44, 0.35);
+  }
+
+  .winner-card.single-card { padding: 16px; justify-content: center; max-width: 420px; margin: 0 auto; width: 100%; }
+  .winner-card.single-card .avatar { width: 72px; height: 72px; }
+  .winner-card.single-card .avatar svg { width: 52px; height: 52px; }
+  .winner-card.single-card.champion .avatar { width: 78px; height: 78px; }
 
   /* ===== PEMENANG: FOOTER ===== */
-  .footer {
-    padding: 18px 45px 22px;
-    background: rgba(15, 5, 38, 0.65);
-    border-top: 1px solid rgba(139, 92, 246, 0.25);
-    position: absolute; bottom: 0; left: 0; right: 0;
-  }
+  .footer { padding: 12px 40px 18px; border-top: 1px solid rgba(10, 77, 162, 0.15); position: relative; z-index: 2; }
+
   .congrats-banner {
-    text-align: center; padding: 14px;
-    background: linear-gradient(90deg, rgba(255, 214, 10, 0.15) 0%, rgba(255, 214, 10, 0.25) 50%, rgba(255, 214, 10, 0.15) 100%);
-    border: 1px dashed rgba(255, 214, 10, 0.5); border-radius: 6px; margin-bottom: 12px;
+    text-align: center; padding: 12px;
+    background: linear-gradient(90deg, rgba(30, 127, 232, 0.1) 0%, rgba(79, 179, 255, 0.15) 50%, rgba(30, 127, 232, 0.1) 100%);
+    border: 1px dashed rgba(10, 77, 162, 0.4); border-radius: 6px; margin-bottom: 10px;
   }
-  .congrats-title { font-family: 'Archivo Black', sans-serif; font-size: 18px; letter-spacing: 2px; color: #FFD60A; text-transform: uppercase; margin-bottom: 4px; }
-  .congrats-sub { font-size: 10px; letter-spacing: 1px; opacity: 0.85; text-transform: uppercase; }
-  .footer .bottom-info { align-items: center; padding-top: 0; border-top: none; margin-top: 0; }
+  .congrats-title { font-family: 'Archivo Black', sans-serif; font-size: 17px; letter-spacing: 2px; color: #0A4DA2; text-transform: uppercase; margin-bottom: 3px; }
+  .congrats-sub { font-size: 10px; letter-spacing: 1px; color: #062B5C; opacity: 0.75; text-transform: uppercase; }
+  .footer .bottom-info { align-items: center; border-top: none; padding-top: 0; margin-top: 0; }
 
   /* ===== PRINT ===== */
   @media print {
@@ -561,37 +538,47 @@
 
 <div class="page-content">
 
-  <!-- ===============================
+  <!-- ===========================
        TAB 1: SOSIALISASI
-  ================================ -->
+  ============================ -->
   <div id="tab-sosialisasi" class="tab-panel active">
-    <div class="panel-label">◆ PAMFLET SOSIALISASI — CONTOH DESAIN ◆</div>
+    <div class="panel-label">◆ PAMFLET SOSIALISASI — BLUE & WHITE ◆</div>
 
     <div class="pamflet pamflet-sos">
-      <div class="stars-bg"></div>
+
+      <!-- Wave BG -->
+      <svg class="wave-bg" viewBox="0 0 794 1123" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#4FB3FF" stop-opacity="0.08"/>
+            <stop offset="100%" stop-color="#1E7FE8" stop-opacity="0.03"/>
+          </linearGradient>
+          <linearGradient id="sg2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#0A4DA2" stop-opacity="0.05"/>
+            <stop offset="100%" stop-color="#4FB3FF" stop-opacity="0.08"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,200 Q200,150 400,200 T800,200 L800,0 L0,0 Z" fill="url(#sg1)"/>
+        <path d="M0,950 Q200,900 400,950 T800,950 L800,1123 L0,1123 Z" fill="url(#sg2)"/>
+        <circle cx="700" cy="150" r="80" fill="#4FB3FF" opacity="0.08"/>
+        <circle cx="80" cy="850" r="120" fill="#1E7FE8" opacity="0.06"/>
+      </svg>
       <div class="pattern-overlay"></div>
 
-      <div class="spark" style="top: 6%; left: 6%; font-size: 14px;">✦</div>
-      <div class="spark" style="top: 10%; right: 10%; font-size: 12px;">✧</div>
-      <div class="spark" style="top: 38%; left: 3%; font-size: 14px;">✦</div>
-      <div class="spark" style="top: 50%; right: 4%; font-size: 13px;">✧</div>
-      <div class="spark" style="bottom: 24%; left: 5%; font-size: 14px;">✦</div>
-      <div class="spark" style="bottom: 10%; right: 8%; font-size: 12px;">✧</div>
+      <div class="spark" style="top:6%;left:6%;font-size:14px;">✦</div>
+      <div class="spark" style="top:10%;right:10%;font-size:12px;">✧</div>
+      <div class="spark" style="top:38%;left:3%;font-size:14px;">✦</div>
+      <div class="spark" style="top:50%;right:4%;font-size:13px;">✧</div>
+      <div class="spark" style="bottom:24%;left:5%;font-size:14px;">✦</div>
+      <div class="spark" style="bottom:10%;right:8%;font-size:12px;">✧</div>
 
-      <svg class="corner-accent tl" viewBox="0 0 100 100">
-        <polygon points="50,5 61,39 97,39 68,60 79,95 50,75 21,95 32,60 3,39 39,39" fill="#FFD60A"/>
-      </svg>
-      <svg class="corner-accent br" viewBox="0 0 100 100">
-        <polygon points="50,5 61,39 97,39 68,60 79,95 50,75 21,95 32,60 3,39 39,39" fill="#8B5CF6"/>
-      </svg>
+      <svg class="corner-accent tl" viewBox="0 0 100 100"><polygon points="50,5 61,39 97,39 68,60 79,95 50,75 21,95 32,60 3,39 39,39" fill="#1E7FE8"/></svg>
+      <svg class="corner-accent br" viewBox="0 0 100 100"><polygon points="50,5 61,39 97,39 68,60 79,95 50,75 21,95 32,60 3,39 39,39" fill="#0A4DA2"/></svg>
 
       <!-- HEADER -->
       <div class="header">
         <div class="brand-row">
-          <div class="logo-box">
-            <div class="brand-logo">🚀</div>
-            <span>ASTRO · BE ASTRONAUTS</span>
-          </div>
+          <div class="logo-box"><div class="brand-logo">🚀</div><span>ASTRO · BE ASTRONAUTS</span></div>
           <div class="period-badge">MULAI MEI 2026</div>
         </div>
         <div class="pre-title">★ PROGRAM APRESIASI BULANAN ★</div>
@@ -609,10 +596,7 @@
         </div>
         <div class="divisions-grid">
           <div class="division-card">
-            <div class="division-header">
-              <div class="division-name">📥 INBOUND</div>
-              <div class="division-slots">TOP 3</div>
-            </div>
+            <div class="division-header"><div class="division-name">📥 INBOUND</div><div class="division-slots">TOP 3</div></div>
             <div class="podium">
               <div class="place gold"><div class="place-rank">1</div><div class="place-label">Juara</div><div class="place-prize">Rp 500K<small>apresiasi</small></div></div>
               <div class="place silver"><div class="place-rank">2</div><div class="place-label">Juara</div><div class="place-prize">Rp 300K<small>apresiasi</small></div></div>
@@ -620,10 +604,7 @@
             </div>
           </div>
           <div class="division-card">
-            <div class="division-header">
-              <div class="division-name">📤 OUTBOUND</div>
-              <div class="division-slots">TOP 3</div>
-            </div>
+            <div class="division-header"><div class="division-name">📤 OUTBOUND</div><div class="division-slots">TOP 3</div></div>
             <div class="podium">
               <div class="place gold"><div class="place-rank">1</div><div class="place-label">Juara</div><div class="place-prize">Rp 500K<small>apresiasi</small></div></div>
               <div class="place silver"><div class="place-rank">2</div><div class="place-label">Juara</div><div class="place-prize">Rp 300K<small>apresiasi</small></div></div>
@@ -631,10 +612,7 @@
             </div>
           </div>
           <div class="division-card">
-            <div class="division-header">
-              <div class="division-name">📋 INVENTORY</div>
-              <div class="division-slots">TOP 3</div>
-            </div>
+            <div class="division-header"><div class="division-name">📋 INVENTORY</div><div class="division-slots">TOP 3</div></div>
             <div class="podium">
               <div class="place gold"><div class="place-rank">1</div><div class="place-label">Juara</div><div class="place-prize">Rp 500K<small>apresiasi</small></div></div>
               <div class="place silver"><div class="place-rank">2</div><div class="place-label">Juara</div><div class="place-prize">Rp 300K<small>apresiasi</small></div></div>
@@ -642,10 +620,7 @@
             </div>
           </div>
           <div class="division-card">
-            <div class="division-header">
-              <div class="division-name">🛠️ GENERAL / SUPPORT</div>
-              <div class="division-slots">TOP 1</div>
-            </div>
+            <div class="division-header"><div class="division-name">🛠️ GENERAL / SUPPORT</div><div class="division-slots">TOP 1</div></div>
             <div class="podium single">
               <div class="place gold"><div class="place-rank">1</div><div class="place-label">Best Performer</div><div class="place-prize">Rp 500.000<small>apresiasi bulanan</small></div></div>
             </div>
@@ -668,7 +643,7 @@
         </div>
       </div>
 
-      <!-- REQUIREMENTS STRIP -->
+      <!-- ANNOUNCEMENT STRIP -->
       <div class="requirements-strip">
         <div class="req-block">
           <div class="req-icon">★</div>
@@ -681,7 +656,7 @@
 
       <!-- BOTTOM AREA -->
       <div class="bottom-area">
-        <div class="cta-bar">★ JADILAH BINTANGNYA! ★</div>
+        <div class="cta-bar">★ MITRA LEADERBOARD ★</div>
         <div class="bottom-info">
           <span>ASTRO · PT ASTRO TECHNOLOGIES INDONESIA</span>
           <span>WH CIBITUNG — DRY</span>
@@ -690,46 +665,55 @@
     </div>
   </div>
 
-  <!-- ===============================
+  <!-- ===========================
        TAB 2: PEMENANG
-  ================================ -->
+  ============================ -->
   <div id="tab-pemenang" class="tab-panel">
-    <div class="panel-label">◆ PAMFLET PEMENANG — CONTOH DESAIN ◆</div>
+    <div class="panel-label">◆ PAMFLET PEMENANG — BLUE & WHITE ◆</div>
 
     <div class="pamflet pamflet-pem">
-      <div class="stars-bg"></div>
+
+      <!-- Wave BG -->
+      <svg class="wave-bg" viewBox="0 0 794 1123" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="pg1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#4FB3FF" stop-opacity="0.1"/>
+            <stop offset="100%" stop-color="#1E7FE8" stop-opacity="0.04"/>
+          </linearGradient>
+          <linearGradient id="pg2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#0A4DA2" stop-opacity="0.06"/>
+            <stop offset="100%" stop-color="#4FB3FF" stop-opacity="0.1"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,220 Q200,170 400,220 T800,220 L800,0 L0,0 Z" fill="url(#pg1)"/>
+        <path d="M0,960 Q200,910 400,960 T800,960 L800,1123 L0,1123 Z" fill="url(#pg2)"/>
+        <circle cx="720" cy="130" r="80" fill="#4FB3FF" opacity="0.1"/>
+        <circle cx="60" cy="880" r="110" fill="#1E7FE8" opacity="0.08"/>
+      </svg>
       <div class="pattern-overlay"></div>
 
-      <div class="confetti" style="top: 6%; left: 6%; color: #FFD60A;">✦</div>
-      <div class="confetti" style="top: 10%; right: 8%; color: #8B5CF6;">★</div>
-      <div class="confetti" style="top: 20%; left: 4%; color: #FFD60A; font-size: 14px;">✧</div>
-      <div class="confetti" style="top: 35%; right: 3%; color: #FFD60A; font-size: 15px;">✦</div>
-      <div class="confetti" style="top: 55%; left: 3%; color: #8B5CF6; font-size: 13px;">★</div>
-      <div class="confetti" style="top: 70%; right: 4%; color: #FFD60A; font-size: 14px;">✧</div>
-      <div class="confetti" style="bottom: 15%; left: 5%; color: #FFD60A;">✦</div>
-      <div class="confetti" style="bottom: 8%; right: 7%; color: #8B5CF6; font-size: 14px;">★</div>
+      <div class="confetti" style="top:5%;left:5%;color:#FFC72C;">✦</div>
+      <div class="confetti" style="top:8%;right:8%;color:#1E7FE8;">★</div>
+      <div class="confetti" style="top:18%;left:3%;color:#FFC72C;font-size:13px;">✧</div>
+      <div class="confetti" style="top:32%;right:3%;color:#4FB3FF;font-size:14px;">✦</div>
+      <div class="confetti" style="top:52%;left:3%;color:#1E7FE8;font-size:12px;">★</div>
+      <div class="confetti" style="top:70%;right:4%;color:#FFC72C;font-size:13px;">✧</div>
+      <div class="confetti" style="bottom:14%;left:4%;color:#1E7FE8;">✦</div>
+      <div class="confetti" style="bottom:7%;right:6%;color:#4FB3FF;font-size:14px;">★</div>
 
-      <svg class="corner-accent tl" viewBox="0 0 100 100">
-        <polygon points="50,5 61,39 97,39 68,60 79,95 50,75 21,95 32,60 3,39 39,39" fill="#FFD60A"/>
-      </svg>
-      <svg class="corner-accent br" viewBox="0 0 100 100">
-        <polygon points="50,5 61,39 97,39 68,60 79,95 50,75 21,95 32,60 3,39 39,39" fill="#8B5CF6"/>
-      </svg>
+      <svg class="corner-accent tl" viewBox="0 0 100 100"><polygon points="50,5 61,39 97,39 68,60 79,95 50,75 21,95 32,60 3,39 39,39" fill="#1E7FE8"/></svg>
+      <svg class="corner-accent br" viewBox="0 0 100 100"><polygon points="50,5 61,39 97,39 68,60 79,95 50,75 21,95 32,60 3,39 39,39" fill="#0A4DA2"/></svg>
 
       <!-- HEADER -->
       <div class="header header-pem">
         <div class="brand-row brand-row-pem">
-          <div class="logo-box">
-            <div class="brand-logo brand-logo-pem">🚀</div>
-            <span>ASTRO · BE ASTRONAUTS</span>
-          </div>
-          <div class="period-badge period-badge-pem">PERIODE · MEI 2026</div>
+          <div class="logo-box"><div class="brand-logo">🚀</div><span>ASTRO · BE ASTRONAUTS</span></div>
+          <div class="period-badge">PERIODE · MEI 2026</div>
         </div>
         <div class="champion-crown">👑</div>
         <div class="pre-title pre-title-pem">★ SELAMAT KEPADA PARA JUARA ★</div>
         <h1 class="main-title main-title-pem">Mitra<br>Leaderboard</h1>
         <div class="warehouse-tag warehouse-tag-pem">📦 WH CIBITUNG · WAREHOUSE DRY</div>
-        <div class="subtitle">Warehouse Star Leaderboard · Top Performer Bulanan</div>
       </div>
 
       <!-- DIVISIONS -->
@@ -737,14 +721,11 @@
 
         <!-- INBOUND -->
         <div class="division-block">
-          <div class="division-label">
-            <span class="division-label-name">📥 INBOUND</span>
-            <span class="division-label-sub">Top 3 Performer</span>
-          </div>
+          <div class="division-label"><span class="division-label-name">📥 INBOUND</span><span class="division-label-sub">Top 3 Performer</span></div>
           <div class="winners-row">
-            <div class="winner-card gold">
+            <div class="winner-card champion">
               <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge gold">1</div></div>
-              <div class="winner-info"><div class="winner-rank-label">JUARA 1</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 500.000</div></div>
+              <div class="winner-info"><div class="winner-rank-label">★ JUARA 1 ★</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 500.000</div></div>
             </div>
             <div class="winner-card silver">
               <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge silver">2</div></div>
@@ -759,14 +740,11 @@
 
         <!-- OUTBOUND -->
         <div class="division-block">
-          <div class="division-label">
-            <span class="division-label-name">📤 OUTBOUND</span>
-            <span class="division-label-sub">Top 3 Performer</span>
-          </div>
+          <div class="division-label"><span class="division-label-name">📤 OUTBOUND</span><span class="division-label-sub">Top 3 Performer</span></div>
           <div class="winners-row">
-            <div class="winner-card gold">
+            <div class="winner-card champion">
               <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge gold">1</div></div>
-              <div class="winner-info"><div class="winner-rank-label">JUARA 1</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 500.000</div></div>
+              <div class="winner-info"><div class="winner-rank-label">★ JUARA 1 ★</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 500.000</div></div>
             </div>
             <div class="winner-card silver">
               <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge silver">2</div></div>
@@ -781,14 +759,11 @@
 
         <!-- INVENTORY -->
         <div class="division-block">
-          <div class="division-label">
-            <span class="division-label-name">📋 INVENTORY</span>
-            <span class="division-label-sub">Top 3 Performer</span>
-          </div>
+          <div class="division-label"><span class="division-label-name">📋 INVENTORY</span><span class="division-label-sub">Top 3 Performer</span></div>
           <div class="winners-row">
-            <div class="winner-card gold">
+            <div class="winner-card champion">
               <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge gold">1</div></div>
-              <div class="winner-info"><div class="winner-rank-label">JUARA 1</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 500.000</div></div>
+              <div class="winner-info"><div class="winner-rank-label">★ JUARA 1 ★</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 500.000</div></div>
             </div>
             <div class="winner-card silver">
               <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge silver">2</div></div>
@@ -803,14 +778,11 @@
 
         <!-- GENERAL / SUPPORT -->
         <div class="division-block">
-          <div class="division-label">
-            <span class="division-label-name">🛠️ GENERAL / SUPPORT</span>
-            <span class="division-label-sub">Best Performer</span>
-          </div>
+          <div class="division-label"><span class="division-label-name">🛠️ GENERAL / SUPPORT</span><span class="division-label-sub">Best Performer</span></div>
           <div class="winners-row single">
-            <div class="winner-card gold single-card">
+            <div class="winner-card champion single-card">
               <div class="avatar-wrapper"><div class="avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div class="rank-badge gold">1</div></div>
-              <div class="winner-info"><div class="winner-rank-label">BEST PERFORMER</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 500.000</div></div>
+              <div class="winner-info"><div class="winner-rank-label">★ BEST PERFORMER ★</div><div class="winner-name">Nama Mitra</div><div class="winner-prize">Rp 500.000</div></div>
             </div>
           </div>
         </div>
@@ -825,7 +797,7 @@
         </div>
         <div class="bottom-info">
           <span>ASTRO · PT ASTRO TECHNOLOGIES INDONESIA</span>
-          <span>WAREHOUSE STAR LEADERBOARD · MEI 2026</span>
+          <span>MITRA LEADERBOARD · MEI 2026</span>
         </div>
       </div>
     </div>
@@ -835,11 +807,8 @@
 
 <script>
   function switchTab(tabName, btn) {
-    // Hide all panels
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    // Deactivate all buttons
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    // Show selected panel and activate button
     document.getElementById('tab-' + tabName).classList.add('active');
     btn.classList.add('active');
   }
